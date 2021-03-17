@@ -99,7 +99,7 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/booking"
-            authRedirect="/booking"
+           
           >
             <Booking />
           </ProtectedRoute>
