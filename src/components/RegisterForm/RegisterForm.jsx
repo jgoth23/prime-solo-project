@@ -21,8 +21,8 @@ function RegisterForm() {
         lastName: lastName,
         username: username,
         password: password,
-        level: level, 
-        age: age
+        level: level,
+        age: age,
       },
     });
   }; // end registerUser
@@ -86,19 +86,18 @@ function RegisterForm() {
       <div>
         <label htmlFor="level">
           level:
-          <select name="level"
-          value={level}
-          id="level"
-          onChange={(event) => setLevel(event.target.value)}>
+          <select
+            name="level"
+            value={level}
+            id="level"
+            onChange={(event) => setLevel(event.target.value)}
+          >
             <option value="">Choose Class</option>
             <option value="Novice">Novice</option>
             <option value="Intermediate">Intermediate</option>
             <option value="Expert">Expert</option>
-            name="level"
-            
-            required
-            
-            </select>
+            name="level" required
+          </select>
         </label>
       </div>
       <div>
