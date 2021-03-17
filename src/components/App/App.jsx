@@ -19,7 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
+import Booking from '../Booking/Booking';
 
 import './App.css';
 
@@ -91,6 +91,17 @@ function App() {
             authRedirect="/user"
           >
             <RegisterPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // with authRedirect:
+            // - if logged in, redirects to "/user"
+            // - else shows RegisterPage at "/registration"
+            exact
+            path="/booking"
+            authRedirect="/booking"
+          >
+            <Booking />
           </ProtectedRoute>
 
           <ProtectedRoute
