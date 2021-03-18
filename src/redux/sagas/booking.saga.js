@@ -22,13 +22,13 @@ function* fetchSession() {
   }
 }
 
-function* bookSession() {
+function* bookSession(action) {
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
-    
+
     yield axios.post('api/booking', action.payload, config);
    
     yield put({type: 'FETCH_BOOKING'});

@@ -5,10 +5,11 @@ const router = express.Router();
 router.post('/', (req, res) => {
   const newSession = req.body;
   console.log('req.user', req.user);
+  console.log('new session', newSession);
   const queryText = `INSERT INTO booking (lessons, date, time, notes, feedback, user_id) 
                     VALUES ($1, $2, $3, $4, $5, $6)`;
   const queryValues = [
-    newSession.lesson, 
+    newSession.lessons, 
     newSession.date,
     newSession.time, 
     newSession.notes,

@@ -19,7 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import Booking from '../BookingPage/BookingPage';
+import BookingPage from '../BookingPage/BookingPage';
 
 import './App.css';
 
@@ -99,9 +99,10 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/booking"
+         
            
           >
-            <Booking />
+            <BookingPage />
           </ProtectedRoute>
 
           <ProtectedRoute
