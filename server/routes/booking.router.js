@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-
+// GET users event
 router.get('/', (req, res) => {
   const queryText = `SELECT * FROM booking WHERE booking.user_id = $1`
   pool.query(queryText, [req.user.id])
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
       res.sendStatus(500);
     })
 });
-
+// POST users new event
 router.post('/', (req, res) => {
   const newSession = req.body;
   console.log('req.user', req.user);
@@ -38,5 +38,17 @@ router.post('/', (req, res) => {
     });
   
 });
+
+// DELETE a users event
+router. delete('/:id', (req, res) => {
+  pool.query('DELETE FROM "booking" WHERE id=$1', [req.params.id])
+  .then((result) => {
+    res.sendStatus(200); 
+  })
+  .catch((error) => {
+    console.log('Error deleting', error);
+    res.sendStatus(500);
+  })
+})
 
 module.exports = router;

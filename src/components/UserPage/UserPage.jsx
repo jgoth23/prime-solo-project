@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {useEffect} from 'react';
 import { useDispatch } from 'react-redux'; 
+import axios from 'axios';
 
 
 function UserPage() {
@@ -25,6 +26,17 @@ function UserPage() {
     history.push('/booking')
     console.log('button works');
   }
+
+  const deleteEvent =  () => {
+    axios({
+      method: 'DELETE', 
+      url: `/api/booking`
+    })
+    .then((response) => {
+      
+    })
+  }
+
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
