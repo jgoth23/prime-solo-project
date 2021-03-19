@@ -9,10 +9,11 @@ import { useDispatch } from 'react-redux';
 function UserPage() {
   const history = useHistory();
   const dispatch = useDispatch();
-  console.log('in the event', bookingEvent);
+  
 
 
   useEffect(() => {
+    console.log('in the event', bookingEvent);
     dispatch({ type: 'FETCH_BOOKING' });
   }, []);
 
@@ -27,15 +28,14 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <h3>You have 0 sessions booked</h3>
+      <h3>You have {bookingEvent.length} sessions booked</h3>
       <button onClick={handleBooking} className="btn">Book Now</button>
       <LogOutButton className="btn" />
       
       {bookingEvent.map((session) => {
         return (
-          <ul>
+          <ul key={session.id}>
             <li>{session.lessons}</li>
-            <li>{session.date}</li>
             <li>{session.date}</li>
             <li>{session.time}</li>
             <li>{session.notes}</li>
