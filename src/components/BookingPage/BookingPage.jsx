@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function Booking() {
   const history = useHistory();
@@ -14,7 +14,11 @@ function Booking() {
   const [lessons, setLessons] = useState('');
   const [notes, setNotes] = useState('');
 
-  const booking = useSelector((store) => store.booking);
+  // useEffect(() => {
+  //   dispatch({ type: 'FETCH_BOOKING' });
+  // }, []);
+
+  // const bookingEvent = useSelector((store) => store.booking);
 
   function addSession() {
     console.log('add session');
@@ -33,20 +37,19 @@ function Booking() {
   return (
     <div>
       <h1>Book Now</h1>
-    
-      {booking.map(session => {
+
+      {/* {bookingEvent.map((session) => {
         return (
           <ul>
-            <li>
-              {session.lessons, session.date, session.time, session.notes}
-            </li>
+            <li>{session.lessons}</li>
+            <li>{session.date}</li>
+            <li>{session.date}</li>
+            <li>{session.time}</li>
+            <li>{session.notes}</li>
           </ul>
-        )
-      })
-        
-      }
-    
-      
+        );
+      })} */}
+
       <div>
         <TextField
           variant="outlined"
@@ -54,7 +57,6 @@ function Booking() {
           type="date"
           onChange={(event) => setDate(event.target.value)}
         />
-       
       </div>
       <div>
         <TextField
