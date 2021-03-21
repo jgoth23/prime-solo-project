@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
 });
 
 // DELETE a users event
-router. delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   pool.query('DELETE FROM "booking" WHERE id=$1', [req.params.id])
   .then((result) => {
     res.sendStatus(200); 
@@ -49,6 +49,17 @@ router. delete('/:id', (req, res) => {
     console.log('Error deleting', error);
     res.sendStatus(500);
   })
-})
+});
+
+router.put('/:id', (req, res) => {
+  pool.query(`UPDATE booking SET feedback = $1 WHERE id=$2`, [req.body, req.params.id])
+  .then((result) => {
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    console.log('error', err);
+    res.sendStatus(500);
+  })
+});
 
 module.exports = router;

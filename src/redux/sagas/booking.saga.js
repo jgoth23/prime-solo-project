@@ -4,7 +4,23 @@ import axios from 'axios';
 
 function* bookingSaga() {
   yield takeLatest('BOOKING', bookSession);
-  yield takeLatest('FETCH_BOOKING', fetchSession)
+  yield takeLatest('FETCH_BOOKING', fetchSession);
+  yield takeLatest('UPDATE', eventFeedback);
+}
+
+function* eventFeedback() {
+  try {
+    const config = {
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
+    };
+    yield axios.put('/api/booking', config);
+
+    yield put({type: 'FETCH_BOOKING', payload: action.payload})
+  }
+  catch (error) {
+    console.log('failed to update', error);
+  }
 }
 
 function* fetchSession() {
