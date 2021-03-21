@@ -15,4 +15,8 @@ function Admin() {
       payload: feedback
     })
   }
+  return (
+    <button onClick={setFeedback}>Give Feedback</button>
+  )
 }
+export default Admin;
