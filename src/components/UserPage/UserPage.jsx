@@ -1,17 +1,14 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import {useEffect} from 'react';
-import { useDispatch } from 'react-redux'; 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
-
 
 function UserPage() {
   const history = useHistory();
   const dispatch = useDispatch();
-  
-
 
   useEffect(() => {
     console.log('in the event', bookingEvent);
@@ -23,27 +20,31 @@ function UserPage() {
   const bookingEvent = useSelector((store) => store.booking);
 
   function handleBooking() {
-    history.push('/booking')
+    history.push('/booking');
     console.log('button works');
   }
 
-  const deleteEvent =  () => {
+  const deleteEvent = (id) => {
     axios({
-      method: 'DELETE', 
-      url: `/api/booking`
+      method: 'DELETE',
+      url: `/api/booking/${id}`,
+    }).then((response) => {
+      dispatch({type: 'FETCH_BOOKING'});
     })
-    .then((response) => {
-      
+    .catch((error) => {
+      console.log('error', error)
     })
-  }
+  };
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <h3>You have {bookingEvent.length} sessions booked</h3>
-      <button onClick={handleBooking} className="btn">Book Now</button>
+      <button onClick={handleBooking} className="btn">
+        Book Now
+      </button>
       <LogOutButton className="btn" />
-      
+
       {bookingEvent.map((session) => {
         return (
           <ul key={session.id}>
@@ -51,6 +52,7 @@ function UserPage() {
             <li>{session.date}</li>
             <li>{session.time}</li>
             <li>{session.notes}</li>
+            <button onClick={() => deleteEvent(session.id)} className="btn">Delete Session</button>
           </ul>
         );
       })}
