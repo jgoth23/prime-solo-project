@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -21,11 +21,15 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import BookingPage from '../BookingPage/BookingPage';
 import Admin from '../Admin/Admin';
+import AdminHome from '../AdminHome/AdminHome';
+
 
 import './App.css';
 
 function App() {
   const dispatch = useDispatch();
+
+  const user = useSelector((store) => store.user);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
@@ -53,6 +57,12 @@ function App() {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
+          if (user.is_admin === true) {
+            <ProtectedRoute>
+              <AdminHome />
+            </ProtectedRoute>
+          }
+        
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact

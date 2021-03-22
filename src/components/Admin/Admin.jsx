@@ -1,5 +1,6 @@
 import {useDispatch} from 'react-redux';
 import {useState} from 'react';
+import axios from 'axios';
 
 
 
@@ -7,8 +8,8 @@ function Admin() {
   const dispatch = useDispatch();
 
   const [feedback, setFeedback] = useState();
-
-  function submitFeedback() {
+  
+   function submitFeedback() {
     console.log('in feedback');
     dispatch({
       type: 'UPDATE',
@@ -16,7 +17,7 @@ function Admin() {
     })
   }
   return (
-    <button onClick={setFeedback}>Give Feedback</button>
+    <button onClick={setFeedback} className="btn">Give Feedback</button>
   )
 }
 export default Admin;
