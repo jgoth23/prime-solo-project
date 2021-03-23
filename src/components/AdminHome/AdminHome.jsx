@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+
 
 function UserPage() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const [feedback, setFeedback] = useState();
 
   useEffect(() => {
     console.log('in the event', adminList);
@@ -19,12 +20,15 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const adminList = useSelector((store) => store.admin);
 
-  function handleAdmin() {
-    history.push('/admin');
-    console.log('button works');
+  const submitFeedback = (session) => {
+    dispatch({
+      type: "UPDATE",
+      payload: {
+        id: session.id,
+        feedback: feedback
+      }
+    });
   }
-
-  
 
   return (
     <div className="container">
@@ -40,7 +44,9 @@ function UserPage() {
             <li>{session.date}</li>
             <li>{session.time}</li>
             <li>{session.notes}</li>
-            <button onClick={handleAdmin} className="btn">Leave Feedback</button>
+            <li>{session.feedback}</li>
+            <textarea onChange={(event) => setFeedback(event.target.value)}></textarea>
+            <button onClick={() => submitFeedback(session)} className="btn">Leave Feedback</button>
           </ul>
         );
       })}

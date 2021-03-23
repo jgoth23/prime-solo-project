@@ -35,22 +35,11 @@ function Booking() {
     history.push('/home');
   }
   return (
-    <div>
-      <h1>Book Now</h1>
+    <div className="bookDiv">
+      <h1 class="h1">Book Now</h1>
 
-      {/* {bookingEvent.map((session) => {
-        return (
-          <ul>
-            <li>{session.lessons}</li>
-            <li>{session.date}</li>
-            <li>{session.date}</li>
-            <li>{session.time}</li>
-            <li>{session.notes}</li>
-          </ul>
-        );
-      })} */}
-
-      <div>
+      
+      <div className="bookDiv">
         <TextField
           variant="outlined"
           color="secondary"
@@ -58,7 +47,7 @@ function Booking() {
           onChange={(event) => setDate(event.target.value)}
         />
       </div>
-      <div>
+      <div className="bookDiv">
         <TextField
           variant="outlined"
           color="secondary"
@@ -66,7 +55,7 @@ function Booking() {
           onChange={(event) => setTime(event.target.value)}
         />
       </div>
-      <div>
+      <div className="bookDiv">
         <select
           name="lessons"
           // value={level}
@@ -81,7 +70,7 @@ function Booking() {
           <option value="Pumping">Pumping</option>
           <option value="Jumping">Jumping</option>
         </select>
-        <div></div>
+        <div className="bookDiv"></div>
         <TextField
           variant="outlined"
           color="secondary"

@@ -8,15 +8,15 @@ function* bookingSaga() {
   yield takeLatest('UPDATE', eventFeedback);
 }
 
-function* eventFeedback() {
+function* eventFeedback(action) {
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
-    yield axios.put('/api/booking', config);
+    yield axios.put('/api/booking', action.payload, config);
 
-    yield put({type: 'FETCH_BOOKING', payload: action.payload})
+    yield put({type: 'GET_ADMIN_SESSIONS'})
   }
   catch (error) {
     console.log('failed to update', error);

@@ -32,7 +32,7 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #3560af;
+  background-color: #942503;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -75,6 +75,21 @@ Button
   border-color: #008183;
   color: #008183;
 }
+
+.bookDiv {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.h1 {
+  text-align: center;
+}
+
+.userDiv {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
 
 /* --------------------------------------------------------------------------------
 Alert

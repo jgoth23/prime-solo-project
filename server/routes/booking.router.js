@@ -51,8 +51,8 @@ router.delete('/:id', (req, res) => {
   })
 });
 
-router.put('/:id', (req, res) => {
-  pool.query(`UPDATE booking SET feedback = $1 WHERE id=$2`, [req.body, req.params.id])
+router.put('/', (req, res) => {
+  pool.query(`UPDATE booking SET feedback = $1 WHERE id=$2`, [req.body.feedback, req.body.id])
   .then((result) => {
     res.sendStatus(200);
   })

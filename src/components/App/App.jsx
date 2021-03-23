@@ -23,7 +23,6 @@ import BookingPage from '../BookingPage/BookingPage';
 import Admin from '../Admin/Admin';
 import AdminHome from '../AdminHome/AdminHome';
 
-
 import './App.css';
 
 function App() {
@@ -51,18 +50,17 @@ function App() {
           >
             <AboutPage />
           </Route>
-          
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          if (user.is_admin === true) {
+          {user.is_admin === true && (
             <ProtectedRoute>
               <AdminHome />
             </ProtectedRoute>
-          }
-        
+          )}
+
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -110,8 +108,6 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/booking"
-         
-           
           >
             <BookingPage />
           </ProtectedRoute>
@@ -122,8 +118,6 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/admin"
-         
-           
           >
             <Admin />
           </ProtectedRoute>

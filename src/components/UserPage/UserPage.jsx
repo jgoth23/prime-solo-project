@@ -37,6 +37,7 @@ function UserPage() {
   };
 
   return (
+    
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <h3>You have {bookingEvent.length} sessions booked</h3>
@@ -47,6 +48,8 @@ function UserPage() {
 
       {bookingEvent.map((session) => {
         return (
+          // <div class="card">
+           
           <ul key={session.id}>
             <li>{session.lessons}</li>
             <li>{session.date}</li>
@@ -57,6 +60,7 @@ function UserPage() {
         );
       })}
     </div>
+    
   );
 }
 
