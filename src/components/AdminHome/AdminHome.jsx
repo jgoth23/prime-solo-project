@@ -28,6 +28,7 @@ function UserPage() {
         feedback: feedback
       }
     });
+    window.location.reload(true);
   }
 
   return (

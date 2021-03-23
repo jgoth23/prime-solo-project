@@ -38,7 +38,7 @@ function UserPage() {
 
   return (
     
-    <div className="container">
+     <div className="card">
       <h2>Welcome, {user.username}!</h2>
       <h3>You have {bookingEvent.length} sessions booked</h3>
       <button onClick={handleBooking} className="btn">
@@ -48,13 +48,15 @@ function UserPage() {
 
       {bookingEvent.map((session) => {
         return (
-          // <div class="card">
+          //  <div className="card">
            
           <ul key={session.id}>
             <li>{session.lessons}</li>
             <li>{session.date}</li>
             <li>{session.time}</li>
             <li>{session.notes}</li>
+            <h4>Feedback from the coach</h4>
+            <li>{session.feedback}</li>
             <button onClick={() => deleteEvent(session.id)} className="btn">Delete Session</button>
           </ul>
         );
