@@ -1,5 +1,6 @@
 import {useDispatch} from 'react-redux';
 import {useState} from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 
@@ -8,16 +9,27 @@ function Admin() {
   const dispatch = useDispatch();
 
   const [feedback, setFeedback] = useState();
+  const adminFeedback = useSelector((store) => store.feedback);
+
+  console.log('coach feedback', adminFeedback)
+
   
-   function submitFeedback() {
-    console.log('in feedback');
+  const submitFeedback = (session) => {
     dispatch({
-      type: 'UPDATE',
-      payload: feedback
-    })
+      type: "UPDATE",
+      payload: {
+        id: session.id,
+        feedback: feedback
+      }
+    });
+    
   }
   return (
-    <button onClick={setFeedback} className="btn">Give Feedback</button>
+    <div>
+    <textarea onChange={(event) => setFeedback(event.target.value)}></textarea>
+    <button onClick={() => submitFeedback(session)} className="btn">Submit Feedback</button>
+    </div>
+
   )
 }
 export default Admin;

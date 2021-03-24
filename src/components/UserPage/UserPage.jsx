@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
 
-
 function UserPage() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -30,18 +29,17 @@ function UserPage() {
     axios({
       method: 'DELETE',
       url: `/api/booking/${id}`,
-    }).then((response) => {
-      dispatch({type: 'FETCH_BOOKING'});
     })
-    .catch((error) => {
-      console.log('error', error)
-    })
-    
+      .then((response) => {
+        dispatch({ type: 'FETCH_BOOKING' });
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   };
-
+  
   return (
-    
-     <div className="container">
+    <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <h3>You have {bookingEvent.length} sessions booked</h3>
       <button onClick={handleBooking} className="btn">
@@ -51,23 +49,22 @@ function UserPage() {
 
       {bookingEvent.map((session) => {
         return (
-            <div className="card" key={session.id}>
-           
-          <ul className="dots">
-            <li>{session.lessons}</li>
-            <li>{moment(session.date).format("MM/DD/YYYY")}</li>
-            <li>{session.time}</li>
-            <li>{session.notes}</li>
-            <p className="fbTag">Feedback from the coach</p>
-            <li>{session.feedback}</li>
-            <button onClick={() => deleteEvent(session.id)} className="btn">Delete Session</button>
-          </ul>
+          <div className="card" key={session.id}>
+            <ul className="dots">
+              <li>{session.lessons}</li>
+              <li>{moment(session.date).format('MM/DD/YYYY')}</li>
+              <li>{session.time}</li>
+              <li>{session.notes}</li>
+              <p className="fbTag">Feedback from the coach</p>
+              <li>{session.feedback}</li>
+              <button onClick={() => deleteEvent(session.id)} className="btn">
+                Delete Session
+              </button>
+            </ul>
           </div>
-
         );
       })}
     </div>
-    
   );
 }
 

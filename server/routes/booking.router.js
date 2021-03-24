@@ -14,6 +14,18 @@ router.get('/', (req, res) => {
       res.sendStatus(500);
     })
 });
+
+router.get('/', (req, res) => {
+  const queryText = `SELECT booking.id booking.lesson booking.date booking.time booking.notes booking.feedback booking.FROM booking WHERE booking.id = $1`
+  pool.query(queryText, [req.body.id])
+    .then((result) => {
+      res.send(result.rows)
+    })
+    .catch((err) => {
+      console.log('getting an error', err);
+      res.sendStatus(500);
+    })
+});
 // POST users new event
 router.post('/', (req, res) => {
   const newSession = req.body;

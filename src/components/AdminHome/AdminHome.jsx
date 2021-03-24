@@ -13,22 +13,21 @@ function UserPage() {
 
   useEffect(() => {
     console.log('in the event', adminList);
-    dispatch({ type: 'GET_ADMIN_SESSIONS' });
+    dispatch({ type: 'GET_ADMIN_FEEDBACK' });
   }, []);
 
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const adminList = useSelector((store) => store.admin);
 
-  const submitFeedback = (session) => {
+  function redirectFeedback(id) {
+    history.push('/admin')
     dispatch({
-      type: "UPDATE",
-      payload: {
-        id: session.id,
-        feedback: feedback
-      }
-    });
-    window.location.reload(true);
+      typed: 'GET_ADMIN_FEEDBACK',
+      payload:{
+        id: id
+      } 
+    })
   }
 
   return (
@@ -47,8 +46,8 @@ function UserPage() {
             <li>{session.time}</li>
             <li>{session.notes}</li>
             <li>{session.feedback}</li>
-            <textarea onChange={(event) => setFeedback(event.target.value)}></textarea>
-            <button onClick={() => submitFeedback(session)} className="btn">Leave Feedback</button>
+            
+            <button onClick={() => redirectFeedback(session.id)} className="btn">Leave Feedback</button>
           </ul>
           </div>
         );
