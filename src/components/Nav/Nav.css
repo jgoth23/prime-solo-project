@@ -14,7 +14,8 @@
 }
 
 .nav-title {
-  font-size: 24px;
+  font-family: 'Armata';
+  font-size: 26px;
   font-weight: 700;
   color: #f2f2f2;
   padding-left: 10px;
@@ -22,6 +23,7 @@
 }
 
 .navLink {
+  font-family: 'Armata';
   display: inline-block;
   color: #f2f2f2;
   background-color: #942503;
@@ -38,5 +40,5 @@
 }
 
 .navLink:hover {
-  background-color: #008183;
+  background-color: #4f5252;
 }

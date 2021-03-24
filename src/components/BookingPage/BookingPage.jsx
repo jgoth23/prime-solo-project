@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 function Booking() {
   const history = useHistory();
@@ -49,9 +50,10 @@ function Booking() {
       </div>
       <div className="bookDiv">
         <TextField
-          variant="outlined"
-          color="secondary"
+          id="time"
           type="time"
+          variant="standard"
+          color="secondary"
           onChange={(event) => setTime(event.target.value)}
         />
       </div>

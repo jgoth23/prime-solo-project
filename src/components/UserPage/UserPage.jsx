@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import moment from 'moment';
+
 
 function UserPage() {
   const history = useHistory();
@@ -34,6 +36,9 @@ function UserPage() {
     .catch((error) => {
       console.log('error', error)
     })
+    swal({
+      
+    })
   };
 
   return (
@@ -52,7 +57,7 @@ function UserPage() {
            
           <ul className="dots">
             <li>{session.lessons}</li>
-            <li>{session.date}</li>
+            <li>{moment(session.date).format("MM/DD/YYYY")}</li>
             <li>{session.time}</li>
             <li>{session.notes}</li>
             <p className="fbTag">Feedback from the coach</p>
