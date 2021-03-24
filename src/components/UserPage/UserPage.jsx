@@ -36,9 +36,7 @@ function UserPage() {
     .catch((error) => {
       console.log('error', error)
     })
-    swal({
-      
-    })
+    
   };
 
   return (
