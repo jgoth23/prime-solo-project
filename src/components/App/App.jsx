@@ -51,13 +51,13 @@ function App() {
             <AboutPage />
           </Route>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path="/user"
           >
             <UserPage />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -81,6 +81,7 @@ function App() {
             exact
             path="/user"
           >
+            {console.log('user is', user, user.is_admin)}
             {user.is_admin ?
               <AdminHome /> 
               :
