@@ -40,7 +40,8 @@ function UserPage() {
 
       {adminList.map((session) => {
         return (
-          <ul key={session.id}>
+          <div className="card" key={session.id}>
+          <ul className="dots">
             <li>{session.lessons}</li>
             <li>{session.date}</li>
             <li>{session.time}</li>
@@ -49,6 +50,7 @@ function UserPage() {
             <textarea onChange={(event) => setFeedback(event.target.value)}></textarea>
             <button onClick={() => submitFeedback(session)} className="btn">Leave Feedback</button>
           </ul>
+          </div>
         );
       })}
     </div>

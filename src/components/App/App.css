@@ -95,7 +95,14 @@ Button
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
 }
+.fbTag {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
+.dots {
+  list-style-type: circle;
+}
 
 /* --------------------------------------------------------------------------------
 Alert

@@ -55,18 +55,29 @@ function App() {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          {user.is_admin === true && (
+          {/* {user.is_admin === true && (
             <ProtectedRoute exact path="/admin">
               <AdminHome />
             </ProtectedRoute>
-          )}
+          )} */}
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
             path="/user"
           >
             <UserPage />
+          </ProtectedRoute> */}
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/user"
+          >
+            {user.is_admin ?
+              <AdminHome /> 
+              :
+              <UserPage />
+            }
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -112,7 +123,7 @@ function App() {
             <BookingPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/user"
             // - else shows RegisterPage at "/registration"
@@ -120,7 +131,7 @@ function App() {
             path="/admin"
           >
             <Admin />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           <ProtectedRoute
             // with authRedirect:
