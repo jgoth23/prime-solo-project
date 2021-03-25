@@ -37,7 +37,7 @@ function UserPage() {
         console.log('error', error);
       });
   };
-  
+
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>

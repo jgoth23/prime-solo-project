@@ -57,7 +57,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #0e4d4e;
+  background-color: #444;
   text-decoration: none;
 }
 
@@ -74,8 +74,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #444;
+  color: #444;
 }
 
 .bookDiv {
@@ -97,6 +97,10 @@ Button
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
+  transition: all ease 200ms;
+}
+.card:hover{
+  transform: scale(1.03);
 }
 .fbTag {
   margin-bottom: 5px;

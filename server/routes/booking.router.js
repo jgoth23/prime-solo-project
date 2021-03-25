@@ -15,9 +15,9 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/', (req, res) => {
-  const queryText = `SELECT booking.id booking.lesson booking.date booking.time booking.notes booking.feedback booking.FROM booking WHERE booking.id = $1`
-  pool.query(queryText, [req.body.id])
+router.get('/:id', (req, res) => {
+  const queryText = `SELECT booking.id, booking.lessons, booking.date, booking.time, booking.notes, booking.feedback FROM booking WHERE booking.id = $1`
+  pool.query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows)
     })

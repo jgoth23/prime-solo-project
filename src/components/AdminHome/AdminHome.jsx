@@ -13,7 +13,7 @@ function UserPage() {
 
   useEffect(() => {
     console.log('in the event', adminList);
-    dispatch({ type: 'GET_ADMIN_FEEDBACK' });
+    dispatch({ type: 'GET_ADMIN_SESSIONS' });
   }, []);
 
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -23,7 +23,7 @@ function UserPage() {
   function redirectFeedback(id) {
     history.push('/admin')
     dispatch({
-      typed: 'GET_ADMIN_FEEDBACK',
+      type: 'GET_ADMIN_FEEDBACK',
       payload:{
         id: id
       } 
@@ -33,7 +33,7 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <h3>You have {adminList.length} sessions booked</h3>
+      <h3>You have {adminList.length} upcoming sessions</h3>
       
       <LogOutButton className="btn" />
 
