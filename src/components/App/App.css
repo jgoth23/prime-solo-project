@@ -22,6 +22,7 @@ Container
   padding: 20px;
 }
 
+
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
@@ -101,14 +102,21 @@ Button
 }
 .card:hover{
   transform: scale(1.03);
+  
 }
 .fbTag {
   margin-bottom: 5px;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .dots {
   list-style-type: circle;
+}
+
+.pTag {
+  font-weight: bold;
+  text-align: center;
 }
 
 /* --------------------------------------------------------------------------------

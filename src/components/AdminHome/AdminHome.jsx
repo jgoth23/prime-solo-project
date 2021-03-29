@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-
+import moment from 'moment';
 
 function UserPage() {
   const history = useHistory();
@@ -42,9 +42,11 @@ function UserPage() {
           <div className="card" key={session.id}>
           <ul className="dots">
             <li>{session.lessons}</li>
-            <li>{session.date}</li>
+            <li>{moment(session.date).format('MM/DD/YYYY')}</li>
             <li>{session.time}</li>
+            <p className="pTag">Message from the client</p>
             <li>{session.notes}</li>
+            <p className="pTag">Coach's feedback</p>
             <li>{session.feedback}</li>
             
             <button onClick={() => redirectFeedback(session.id)} className="btn">Leave Feedback</button>
