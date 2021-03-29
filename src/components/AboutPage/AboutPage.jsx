@@ -10,7 +10,8 @@ function AboutPage() {
     <div className="container">
       <div>
         <h1>BMX Racing</h1>
-        <img src="https://image.shutterstock.com/image-photo/venlo-limburg-nertherlands-april-7th-600w-1482630512.jpg"/>
+        {/* <img src="https://image.shutterstock.com/image-photo/venlo-limburg-nertherlands-april-7th-600w-1482630512.jpg"/> */}
+        <img src="bmximg1" />
         <p>What is it?</p>
         <h2>Bicycle motocross</h2>
         <img src="https://image.shutterstock.com/image-photo/chula-vista-california-august-26-600w-707756698.jpg"/>
